@@ -2,6 +2,8 @@ from typing import Optional
 
 import tcod.event
 
+from actions import Action, BumpAction, EscapeAction
+
 from actions import Action, EscapeAction, MovementAction
 
 
@@ -16,13 +18,13 @@ class EventHandler(tcod.event.EventDispatch[Action]):
 
         # First check what key was pressed then call the appropriate action subclass and pass in the relevant data
         if key == tcod.event.K_UP:
-            action = MovementAction(dx=0, dy=-1)
+            action = BumpAction(dx=0, dy=-1)
         elif key == tcod.event.K_DOWN:
-            action = MovementAction(dx=0, dy=1)
+            action = BumpAction(dx=0, dy=1)
         elif key == tcod.event.K_LEFT:
-            action = MovementAction(dx=-1, dy=0)
+            action = BumpAction(dx=-1, dy=0)
         elif key == tcod.event.K_RIGHT:
-            action = MovementAction(dx=1, dy=0)
+            action = BumpAction(dx=1, dy=0)
 
         elif key == tcod.event.K_ESCAPE:
             action = EscapeAction()
